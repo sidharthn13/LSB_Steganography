@@ -11,12 +11,31 @@ void main(){
     collectHeaderInfo(&image);
     displayImageData(&image);
     fseek(image.fileStream, 54, SEEK_SET);  //moving the filestream pointer to the location where pixel data is stored
-    uchar pixelBuffer;
-    int count = 0;
-    while(ftell(image.fileStream)<2359350){
-        count++;
+    
+    uchar pixelBuffer;    //buffer for reading data
+    uchar updatedPixel;   //buffer for writing data
+
+    // //read data from all pixels
+    // int count = 0;
+    // while(ftell(image.fileStream)<2359350){
+    //     count++;
+    //     fread(&pixelBuffer, sizeof(uchar), 1, image.fileStream);
+    //     printf("%d [%d]-> ",pixelBuffer,count);
+    // }
+    // fclose(image.fileStream);
+
+
+    while(ftell(image.fileStream)<(image.size+image.pixelArrayOffset)){
+        //looping condition : while the filestream pointer is less than total number of bytes in image file, continue to execute 
         fread(&pixelBuffer, sizeof(uchar), 1, image.fileStream);
-        printf("%d [%d]-> ",pixelBuffer,count);
+        fseek(image.fileStream, -1, SEEK_CUR);
+        if(pixelBuffer>=150){
+            updatedPixel=255;
+            fwrite(&updatedPixel, sizeof(uchar), 1, image.fileStream);
+        }
+        else{
+        fseek(image.fileStream, 1, SEEK_CUR);
+        }
     }
     fclose(image.fileStream);
 }

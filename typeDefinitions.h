@@ -1,6 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+// //macro definitions:
+// #define LOG  //to print data in image file header to stdout 
+
 //data type definitions:
 typedef unsigned int uint;
 typedef unsigned short int usint;
@@ -25,3 +28,6 @@ typedef struct Secret{
 //function prototypes:
 void collectHeaderInfo(Image *image);
 void collectSecretFileInfo(Secret *secret);
+void displayImageData(Image *image);
+uint encode(Secret *secret, Image *image);
+uint decode(Image *image);

@@ -19,3 +19,4 @@ void collectSecretFileInfo(Secret *secret){
     secret->size = ftell(secret->fileStream); //collecting size data of secret file 
     fseek(secret->fileStream, 0, SEEK_SET); 
 }
+

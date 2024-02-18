@@ -29,5 +29,5 @@ typedef struct Secret{
 void collectHeaderInfo(Image *image);
 void collectSecretFileInfo(Secret *secret);
 void displayImageData(Image *image);
-uint encode(Secret *secret, Image *image);
-uint decode(Image *image);
+int encode(Secret *secret, Image *image);
+int decode(Image *image);

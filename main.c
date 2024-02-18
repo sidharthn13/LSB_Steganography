@@ -12,9 +12,9 @@ void main(){
     displayImageData(&image);   //if LOG macro is defined in the header file, display image header data
     #endif
 
-    uint encodeResult = encode(&secret, &image);
+    int encodeResult = encode(&secret, &image);
     printf("the number of bytes in which data has been embedded in .bmp file : %d bytes\n", encodeResult);
-    uint decodeResult = decode(&image);
+    int decodeResult = decode(&image);
     printf("the number of bytes in which data has been embedded in .bmp file : %d bytes\n", decodeResult);
 
     // while(ftell(image.fileStream)<(image.pixelArraySize+image.pixelArrayOffset)){

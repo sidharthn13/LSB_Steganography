@@ -14,7 +14,7 @@ typedef struct Image{
     usint bitsPerPixel;
     uint width;
     usint padding;
-    uint size;
+    uint pixelArraySize;
 }Image;
 
 typedef struct Secret{
@@ -24,3 +24,4 @@ typedef struct Secret{
 
 //function prototypes:
 void collectHeaderInfo(Image *image);
+void collectSecretFileInfo(Secret *secret);

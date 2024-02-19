@@ -1,3 +1,5 @@
+//Used to log info after important function calls. Can be used to debug the program
+
 #include "typeDefinitions.h"
 void displayImageData(Image *image){
     printf("the type of file is : %s\n",image->fileType);
@@ -7,3 +9,7 @@ void displayImageData(Image *image){
     printf("size of raw pixel bitmap is : %d bytes\n",image->pixelArraySize);
     printf("number of bytes that are used for 4-byte padding : %d bytes\n",image->padding);
 }
+
+void checkEncodeStatus(int bytesToBeDecoded, uchar modifiedByteValue, int bit, size_t numBytesWritten){
+    printf("value of byte %d is :%d....lsb is : %d....bytes updated: %zu\n", bytesToBeDecoded,modifiedByteValue,bit, numBytesWritten);  
+} //numBytesWritten should have a value of 1. This indicates successful write operation on one byte.

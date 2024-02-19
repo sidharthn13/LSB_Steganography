@@ -1,5 +1,4 @@
 //this file is used to capture image header info and secret file info and stream pointers to usable data structures
-
 #include "typeDefinitions.h"
 void collectHeaderInfo(Image *image){
     image->fileStream = fopen("beautiful.bmp","rb+"); //setting up the file stream pointer for image file

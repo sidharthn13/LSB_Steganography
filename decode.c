@@ -3,7 +3,7 @@ int decode(Image *image){
     int decodeLimit; //the number of bytes from  which LSb data have to be extracted
     uchar pixelDataBuffer;//buffer to store data read from bytes in the pixel data array
     uchar hiddenCharacter=0;//buffer used to store the bits extracted from every 8 bytes
-    int numBytesRead;//to keep track of how many bytes have been read from the pixel array 
+    int numBytesRead=0;//to keep track of how many bytes have been read from the pixel array 
     fseek(image->fileStream, 54, SEEK_SET);
     fread(&decodeLimit, sizeof(int), 1, image->fileStream);
     // uint currentPosition = ftell(image->fileStream);
@@ -16,7 +16,7 @@ int decode(Image *image){
         }
         numBytesRead++;
         if(numBytesRead % 8 == 0){
-            printf("%d,",hiddenCharacter);
+            printf("%c",hiddenCharacter);
             hiddenCharacter = 0;
         }
     }

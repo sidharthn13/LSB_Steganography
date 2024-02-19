@@ -12,22 +12,6 @@ void main(){
     displayImageData(&image);   //if LOG macro is defined in the header file, display image header data
     #endif
 
-    int encodeResult = encode(&secret, &image);
-    printf("the number of bytes in which data has been embedded in .bmp file : %d bytes\n", encodeResult);
-    int decodeResult = decode(&image);
-    printf("the number of bytes in which data has been embedded in .bmp file : %d bytes\n", decodeResult);
-
-    // while(ftell(image.fileStream)<(image.pixelArraySize+image.pixelArrayOffset)){
-    //     //looping condition : while the file-stream pointer is less than total number of bytes in image file, continue to execute 
-    //     fread(&pixelBuffer, sizeof(uchar), 1, image.fileStream);
-    //     fseek(image.fileStream, -1, SEEK_CUR);
-    //     if(pixelBuffer>=150){
-    //         updatedPixel=255;
-    //         fwrite(&updatedPixel, sizeof(uchar), 1, image.fileStream);
-    //     }
-    //     else{
-    //     fseek(image.fileStream, 1, SEEK_CUR);
-    //     }
-    // }
-    // fclose(image.fileStream);
+    encode(&secret, &image);
+    decode(&image);
 }

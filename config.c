@@ -20,4 +20,7 @@ void collectSecretFileInfo(Secret *secret){
     secret->size = ftell(secret->fileStream); //collecting size data of secret file 
     fseek(secret->fileStream, 0, SEEK_SET); 
 }
+void initOutputFile(Output *output){
+    output->fileStream = fopen("output.txt","w");  //setting up the output file in write mode(create file if not present, truncate existing data)
+}
 

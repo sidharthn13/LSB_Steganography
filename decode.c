@@ -1,5 +1,5 @@
 #include "typeDefinitions.h"
-int decode(Image *image){
+int decode(Image *image, Output *output){
     int decodeLimit; //the number of bytes from  which LSb data have to be extracted
     uchar pixelDataBuffer;//buffer to store data read from bytes in the pixel data array
     uchar hiddenCharacter=0;//buffer used to store the bits extracted from every 8 bytes
@@ -16,6 +16,7 @@ int decode(Image *image){
         }
         numBytesRead++;
         if(numBytesRead % 8 == 0){
+            fwrite(&hiddenCharacter, sizeof(uchar), 1, output->fileStream);
             printf("%c",hiddenCharacter);
             hiddenCharacter = 0;
         }

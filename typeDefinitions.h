@@ -20,16 +20,19 @@ typedef struct Image{
     usint padding;
     uint pixelArraySize;
 }Image;
-
 typedef struct Secret{
     uint size;
     FILE *fileStream;
 }Secret;
+typedef struct Output{
+    FILE *fileStream;
+}Output;
 
 //function prototypes:
 void collectHeaderInfo(Image *image);
 void collectSecretFileInfo(Secret *secret);
+void initOutputFile(Output *output);
 void displayImageData(Image *image);
 int encode(Secret *secret, Image *image);
-int decode(Image *image);
+int decode(Image *image, Output *output);
 void checkEncodeStatus(int bytesToBeDecoded, uchar modifiedByteValue, int bit, size_t numBytesWritten); //logs status after encode function is called

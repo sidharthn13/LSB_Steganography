@@ -17,11 +17,9 @@ int decode(Image *image, Output *output){
         numBytesRead++;
         if(numBytesRead % 8 == 0){
             fwrite(&hiddenCharacter, sizeof(uchar), 1, output->fileStream);
-            printf("%c",hiddenCharacter);
             hiddenCharacter = 0;
         }
     }
-    printf("\n");
     fclose(output->fileStream);
     return decodeLimit;
 }

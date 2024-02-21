@@ -52,7 +52,23 @@ void collectSecretFileInfo(Secret *secret, char *pathOfFile){
     secret->size = ftell(secret->fileStream); //collecting size data of secret file 
     fseek(secret->fileStream, 0, SEEK_SET); 
 }
-void initOutputFile(Output *output){
-    output->fileStream = fopen("output.txt","w");  //setting up the output file in write mode(create file if not present, truncate existing data)
-}
+void initOutputFile(Output *output, char *pathOfFile){
+    if(pathOfFile==NULL){                                //If file name is not provided, file with default name is created
+        output->fileStream = fopen("output.txt","w");  //setting up the output file in write mode(create file if not present, truncate existing data)
+        if(output->fileStream == NULL){
+            fprintf(stderr, "Error : Cannot create output file.\n");
+            exit(70);
+        }
+        printf("Message decoded and output file created.\n");
+    }
+    else{
+        output->fileStream = fopen(pathOfFile,"w");
+        if(output->fileStream == NULL){
+            fprintf(stderr, "Error : Cannot create output file.\n");
+            exit(70);
+        }
+        printf("Message decoded and output file, %s created.\n", pathOfFile);
+    }
+    }
+   
 

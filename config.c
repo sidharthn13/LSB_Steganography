@@ -1,5 +1,5 @@
 #include "typeDefinitions.h"
-int checkClaOption(int claArgumentCount, char *claArgumentArr[]){
+int checkClaOption(int claArgumentCount, char *claArgumentArr[]){  
     if(claArgumentCount >= 3){
         if(strcmp(claArgumentArr[1], "-e") == 0 ){
             return 1;

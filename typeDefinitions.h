@@ -30,7 +30,7 @@ typedef struct Output{
 }Output;
 
 //function prototypes:
-int checkClaOption(int claArgumentCount, char *claArgumentArr[]);
+int checkClaOption(int claArgumentCount, char *claArgumentArr[]);  //used to check whether encode or decode option is selected
 void collectHeaderInfo(Image *image,char *pathOfFile);
 void collectSecretFileInfo(Secret *secret, char *pathOfFile);
 void initOutputFile(Output *output, char *pathOfFile);

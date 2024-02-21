@@ -27,5 +27,7 @@ int encode(Secret *secret, Image *image){
     }
     fseek(image->fileStream,54,SEEK_SET);
     fwrite(&decryptCount, sizeof(int), 1, image->fileStream);
+    fclose(secret->fileStream);
+    fclose(image->fileStream);
     return decryptCount;
 }

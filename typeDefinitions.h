@@ -32,7 +32,7 @@ typedef struct Output{
 //function prototypes:
 int checkClaOption(int claArgumentCount, char *claArgumentArr[]);
 void collectHeaderInfo(Image *image,char *pathOfFile);
-void collectSecretFileInfo(Secret *secret);
+void collectSecretFileInfo(Secret *secret, char *pathOfFile);
 void initOutputFile(Output *output);
 void displayImageData(Image *image);
 int encode(Secret *secret, Image *image);

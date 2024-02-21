@@ -39,8 +39,15 @@ void collectHeaderInfo(Image *image, char *pathOfFile){
     image->padding=( (image->width * (image->bitsPerPixel/8)) % 4 );  //finding the number of bytes that are used for padding the scan lines
     image->padding = (image->padding != 0) ? 4 - image->padding : 0;  
 }
-void collectSecretFileInfo(Secret *secret){
+void collectSecretFileInfo(Secret *secret, char *pathOfFile){
+    if(pathOfFile==NULL){    //if command line argument for the path of image file is empty
+        fprintf(stderr, "Error : Path to file containing secret file not provided.\n");
+        exit(70);}
     secret->fileStream = fopen("secret.txt","rb+");  //setting up file stream pointer for secret file
+    if(secret->fileStream==NULL){
+        fprintf(stderr, "Error : Error opening file. Please make sure you have provided the correct path and if file exists\n");
+        exit(70);
+    }
     fseek(secret->fileStream,0,SEEK_END);  
     secret->size = ftell(secret->fileStream); //collecting size data of secret file 
     fseek(secret->fileStream, 0, SEEK_SET); 

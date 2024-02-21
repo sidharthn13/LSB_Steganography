@@ -22,5 +22,6 @@ int decode(Image *image, Output *output){
         }
     }
     printf("\n");
+    fclose(output->fileStream);
     return decodeLimit;
 }

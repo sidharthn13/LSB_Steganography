@@ -1,5 +1,22 @@
-//this file is used to capture image header info and secret file info and stream pointers to usable data structures
 #include "typeDefinitions.h"
+int checkClaOption(int claArgumentCount, char *claArgumentArr[]){
+    if(claArgumentCount >= 3){
+        if(strcmp(claArgumentArr[1], "-e") == 0 ){
+            return 1;
+        }
+        else if(strcmp(claArgumentArr[1], "-d") == 0 ){
+            return 2;
+        }
+        else{
+            fprintf(stderr, "Error : Invalid Application command line option");
+            exit(64);
+        }        
+    }
+    else{
+        fprintf(stderr, "Error : Insufficient number of command line arguments");
+        exit(64);   //status code for command line usage error
+    }
+}
 void collectHeaderInfo(Image *image){
     image->fileStream = fopen("beautiful.bmp","rb+"); //setting up the file stream pointer for image file
     fgets(image->fileType,3,image->fileStream); //collecting file type info 

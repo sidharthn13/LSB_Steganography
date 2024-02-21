@@ -58,3 +58,11 @@ void main(int argc, char* argv[]){
     }
 
 }
+
+/*
+
+if(pathOfFile==NULL){    //if command line argument for the path of image file is empty
+        fprintf(stderr, "Error : No file argument passed\n");
+        exit(70);}
+
+*/

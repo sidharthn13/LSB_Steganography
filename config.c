@@ -17,9 +17,17 @@ int checkClaOption(int claArgumentCount, char *claArgumentArr[]){
         exit(64);   //status code for command line usage error
     }
 }
-void collectHeaderInfo(Image *image){
-    image->fileStream = fopen("beautiful.bmp","rb+"); //setting up the file stream pointer for image file
+void collectHeaderInfo(Image *image, char *pathOfFile){
+    image->fileStream = fopen(pathOfFile,"rb+"); //setting up the file stream pointer for image file
+    if(image->fileStream==NULL){
+        fprintf(stderr, "Error : Error opening file. Please make sure you have provided the correct path and if file exists\n");
+        exit(70);
+    }
     fgets(image->fileType,3,image->fileStream); //collecting file type info 
+    if(strcmp(image->fileType, "BM")!=0){
+        fprintf(stderr,"Error : The file provided is not a .bmp file");
+        exit(65);
+    }
     fseek(image->fileStream,8,SEEK_CUR);
     fread(&(image->pixelArrayOffset), sizeof(uint), 1, image->fileStream); //collecting offset after which pixel data is present
     fseek(image->fileStream,4,SEEK_CUR);  //moving the file stream pointer to offset where data about width is present

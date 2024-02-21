@@ -3,7 +3,7 @@
 #include<string.h>
 
 //macro definitions: uncomment to log info related to specific module
-// #define LOG_IMAGE_CONFIG  //to print data in image file header to stdout
+#define LOG_IMAGE_CONFIG  //to print data in image file header to stdout
 // #define LOG_ENCODE  //to print encoded data, number of bytes encoded and fwrite function return value each time a bit is embedded in the pixel array
 
 //data type definitions:
@@ -31,7 +31,7 @@ typedef struct Output{
 
 //function prototypes:
 int checkClaOption(int claArgumentCount, char *claArgumentArr[]);
-void collectHeaderInfo(Image *image);
+void collectHeaderInfo(Image *image,char *pathOfFile);
 void collectSecretFileInfo(Secret *secret);
 void initOutputFile(Output *output);
 void displayImageData(Image *image);

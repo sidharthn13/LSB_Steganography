@@ -2,7 +2,7 @@
 void main(int argc, char *argv[]){
     int checkCla = checkClaOption(argc, argv);  //used to check command line argument option
     Image image;  //setting up data structure to store image data
-    collectHeaderInfo(&image);
+    collectHeaderInfo(&image,argv[2]);
     if(checkCla == 1){
         Secret secret; //setting up data structure to store secret file data
         collectSecretFileInfo(&secret);

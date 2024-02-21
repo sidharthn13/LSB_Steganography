@@ -6,6 +6,7 @@ void main(int argc, char *argv[]){
     if(checkCla == 1){
         Secret secret; //setting up data structure to store secret file data
         collectSecretFileInfo(&secret, argv[3]);
+        checkImgCapacity(&secret, &image); 
         #ifdef LOG_IMAGE_CONFIG
             displayImageData(&image);   //if LOG macro is defined in the header file, display image header data
         #endif

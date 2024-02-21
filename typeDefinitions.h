@@ -33,6 +33,7 @@ typedef struct Output{
 int checkClaOption(int claArgumentCount, char *claArgumentArr[]);  //used to check whether encode or decode option is selected
 void collectHeaderInfo(Image *image,char *pathOfFile);
 void collectSecretFileInfo(Secret *secret, char *pathOfFile);
+void checkImgCapacity(Secret *secret, Image *image); //used to check if image is big enough to store secret information
 void initOutputFile(Output *output, char *pathOfFile);
 void displayImageData(Image *image);
 int encode(Secret *secret, Image *image);

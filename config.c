@@ -52,6 +52,13 @@ void collectSecretFileInfo(Secret *secret, char *pathOfFile){
     secret->size = ftell(secret->fileStream); //collecting size data of secret file 
     fseek(secret->fileStream, 0, SEEK_SET); 
 }
+void checkImgCapacity(Secret *secret, Image *image){
+    if((image->pixelArraySize-8) < secret->size)   //4 bytes used to store number of image bytes taken for embedding, 4 bytes used to store magic string
+    {
+        fprintf(stderr, "Error : Provided secret message is too big to be embedded in image.\n");
+        exit(0);
+    }
+}
 void initOutputFile(Output *output, char *pathOfFile){
     if(pathOfFile==NULL){                                //If file name is not provided, file with default name is created
         output->fileStream = fopen("output.txt","w");  //setting up the output file in write mode(create file if not present, truncate existing data)

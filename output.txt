@@ -1,1 +1,1 @@
-this is the secret file to be encoded.
+this is the secret file to be encoded. This is a test

@@ -53,7 +53,7 @@ void collectSecretFileInfo(Secret *secret, char *pathOfFile){
     fseek(secret->fileStream, 0, SEEK_SET); 
 }
 void checkImgCapacity(Secret *secret, Image *image){
-    if((image->pixelArraySize-8) < secret->size)   //4 bytes used to store number of image bytes taken for embedding, 4 bytes used to store magic string
+    if((image->pixelArraySize-4-(sizeof(MAGIC_STRING)*8)) < secret->size)   //4 bytes used to store number of image bytes taken for embedding, 24 bytes used to store magic string
     {
         fprintf(stderr, "Error : Provided secret message is too big to be embedded in image.\n");
         exit(0);
@@ -66,7 +66,7 @@ void initOutputFile(Output *output, char *pathOfFile){
             fprintf(stderr, "Error : Cannot create output file.\n");
             exit(70);
         }
-        printf("Message decoded and output file created.\n");
+        printf("Output file created.\n");
     }
     else{
         output->fileStream = fopen(pathOfFile,"w");

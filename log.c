@@ -9,5 +9,6 @@ void displayImageData(Image *image){
     printf("number of bytes that are used for 4-byte padding : %d bytes\n",image->padding);
 }
 void checkEncodeStatus(int bytesToBeDecoded, uchar modifiedByteValue, int bit, size_t numBytesWritten){
-    printf("value of byte %d is :%d....the bit embedded in the byte is : %d....byte update status: %zu\n", bytesToBeDecoded,modifiedByteValue,bit, numBytesWritten);  
+    printf("value of byte %d is :%d....the bit embedded in the byte is : %d....byte update status: %zu\n",
+     bytesToBeDecoded,modifiedByteValue,bit, numBytesWritten);  
 } //numBytesWritten should have a value of 1. This indicates successful write operation on one byte.

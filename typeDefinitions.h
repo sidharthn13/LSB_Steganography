@@ -37,8 +37,8 @@ void collectSecretFileInfo(Secret *secret, char *pathOfFile);
 void checkImgCapacity(Secret *secret, Image *image); //used to check if image is big enough to store secret information
 void initOutputFile(Output *output, char *pathOfFile);
 void displayImageData(Image *image);
-void embedMagicString(Image *image);
+void embedMagicString(Image *image);  //signs the image. Signature can be used to verify if image is steged during decoding process
 int encode(Secret *secret, Image *image);
-int decodeMagicString(Image *image);
+void decodeMagicString(Image *image); //Extracts signature from image and compares it to application signature
 int decode(Image *image, Output *output);
 void checkEncodeStatus(int bytesToBeDecoded, uchar modifiedByteValue, int bit, size_t numBytesWritten); //logs status after encode function is called

@@ -1,5 +1,5 @@
 #include "typeDefinitions.h"
-int decodeMagicString(Image *image){
+void decodeMagicString(Image *image){
     char *decodedMagic = (char *)malloc(sizeof(MAGIC_STRING));
     fseek(image->fileStream, -1*(sizeof(MAGIC_STRING)-1)*8, SEEK_END); //moving the file-stream ptr to embed magic str at the end of image
     int decodeLimit = 0;
@@ -23,15 +23,14 @@ int decodeMagicString(Image *image){
     decodedMagic[sizeof(MAGIC_STRING)-1] = '\0';
     int result = strcmp(decodedMagic, MAGIC_STRING);
     free(decodedMagic);
-    return result;
-}
-int decode(Image *image, Output *output){
-    if(decodeMagicString(image)!=0)  //if magic string is not found, the program is terminated.
+    if(result!=0)  //if magic string not found, the program is terminated.
     { 
         fprintf(stderr, "Error : No data has been embedded in the image.\n");
         exit(0);
     }
-    printf("Magic string decoded. Image is steged.\n");
+     printf("Magic string decoded. Image is steged.\n");
+}
+int decode(Image *image, Output *output){
     int decodeLimit; //the number of bytes from  which LSb data have to be extracted
     uchar pixelDataBuffer;//buffer to store data read from bytes in the pixel data array
     uchar hiddenCharacter=0;//buffer used to store the bits extracted from every 8 bytes

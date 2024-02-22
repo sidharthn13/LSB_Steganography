@@ -14,6 +14,7 @@ void main(int argc, char *argv[]){
     }
     else{
     Output output; //setting up data structure to store output file-stream ptr
+    decodeMagicString(&image);
     initOutputFile(&output, argv[3]);
     decode(&image, &output);
     }

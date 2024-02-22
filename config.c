@@ -74,7 +74,7 @@ void initOutputFile(Output *output, char *pathOfFile){
             fprintf(stderr, "Error : Cannot create output file.\n");
             exit(70);
         }
-        printf("Message decoded and output file, %s created.\n", pathOfFile);
+        printf("Output file, %s created.\n", pathOfFile);
     }
     }
    
